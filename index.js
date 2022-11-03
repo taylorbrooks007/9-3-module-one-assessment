@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -28,7 +29,20 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+// loop through array & return all titles
+// we want to return an array of strings (movie titles)
+// if no title, want empty array
+
+
+function getAllMovieTitles(movies){
+  let titlesarr = [] 
+for (let i = 0; i < movies.length; i ++){
+  titlesarr.push(movies[i].title)
+} return titlesarr;
+  }
+
+
+
 
 /**
  * getHighestMetascore()
@@ -41,7 +55,21 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+// loop through movies & grab only metascore rating
+// find average & return as a number (add all values & divide by .length)
+// if empty, return []
+
+
+
+function getHighestMetascore(movies,) {
+  let metascorenum = 0
+for (let i = 0; i < movies.length; i ++){
+  if (movies[i].metascore > metascorenum){
+    metascorenum = movies[i].metascore
+  }
+} 
+return Number(metascorenum);
+}
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +82,21 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+ // loop through movies & grab all IMDB ratings
+ // Add ratings & divide by ratings.length
+ // currently returning array with all ratings
+ // with extra time figure out how to add(accumulator?) & divide by length
+
+function getAverageIMDBRating(movies) {
+  let IMBDavg = 0
+  imbdarr = []
+  let newArr = []
+for (let i = 0; i < movies.length; i++){
+   IMBDavg += (movies[i].imdbRating)
+} imbdarr.push(IMBDavg)
+imbdarr += (IMBDavg / IMBDavg.length)
+return newArr;
+}
 
 /**
  * countByRating()
@@ -67,7 +109,16 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+
+// loop through & find movie ratings (key)
+// # of movies in the array with that rating (value)
+
+
+function countByRating(movies) {
+  for (let i = 0; i < movies.length; i ++){
+   
+  }
+}
 
 /**
  * findById()
@@ -83,7 +134,25 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+// finds matching imbdID & returns corresponding movie
+// if array is empty or does not have a match return null 
+// loop through & check for matching imbdID id 
+// 
+
+
+
+function findById(movies,id) {
+  let imbdMatches = {}
+  for (let i = 0; i < movies.length; i++){
+if (movies[i].imbdID.includes(id)){
+  imbdMatches = movies[i].title
+}
+} return imbdMatches;
+}
+
+
+
+
 
 /**
  * filterByGenre()
@@ -105,7 +174,21 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+// loop through movies
+// check for match with genre (genere has multiple strings)
+// if no match return empty array
+function filterByGenre(movies, genre) {
+  let genrearr = [] //should have movies with matching genre types
+ for (let i = 0; i < movies.length; i ++){
+  if (movies[i].genre.includes(genre)){ // if the loop has a matching genre
+    genrearr.push(movies[i]) // push it into our new array
+    }
+    
+ }
+ 
+ 
+return (genrearr);
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -129,7 +212,22 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+// loop through movies 
+// check if released year is equal to or less than year param
+// released year is a string. we only want the value of the last number (length minus 4 to get last 4 values ??)
+// if yes, return in array
+
+
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+let yearMovie = []
+let stringYear = (movies.releasedOnDVD.length - 4)
+  for (let i = 0; i < movies.length; i++){
+     if (stringYear < year){
+      yearMovie.push(movies[i].title)
+     }
+
+  } return yearMovie;
+} 
 
 /**
  * getBiggestBoxOfficeMovie()
